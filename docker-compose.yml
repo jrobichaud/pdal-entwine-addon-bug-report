@@ -2,7 +2,10 @@ version: '3.3'
 
 services:
   pdal_entwine_python:
-    image: pdal_with_python
+    image: pdal_entwine_python
+    build:
+      context: .
+      dockerfile: ./Dockerfile
     volumes:
       - .:/app
       - ./output/python:/output
@@ -12,7 +15,7 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
-    image: pdal_with_python
+    image: pdal_entwine_cli
     volumes:
       - .:/app
       - ./output/cli:/output

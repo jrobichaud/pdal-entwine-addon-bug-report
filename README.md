@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jrobichaud/pdal-entwine-addon-bug-report.svg?branch=master)](https://travis-ci.org/jrobichaud/pdal-entwine-addon-bug-report)
+
 ## Setup
 
 ```bash

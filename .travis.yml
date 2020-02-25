@@ -1,0 +1,23 @@
+services:
+  - docker
+
+before_install:
+  - docker pull pdal/pdal:latest
+  - docker pull connormanning/entwine:latest
+
+jobs:
+  include:
+    - name: 'Test python'
+      install:
+        - wget https://github.com/PDAL/data/raw/master/liblas/LASFile_1.laz
+        - docker-compose run --rm entwine_convert
+        - docker-compose build pdal_entwine_python
+      script:
+        - docker-compose run --rm pdal_entwine_python
+    - name: 'Test cli'
+      install:
+        - wget https://github.com/PDAL/data/raw/master/liblas/LASFile_1.laz
+        - docker-compose run --rm entwine_convert
+        - docker-compose build pdal_entwine_cli
+      script:
+        - docker-compose run --rm pdal_entwine_cli
