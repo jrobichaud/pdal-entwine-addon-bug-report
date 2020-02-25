@@ -1,0 +1,14 @@
+{
+  "pipeline": [
+    {
+      "type": "readers.ept",
+      "filename": "LASFile_1_entwine/ept.json"
+    },
+    {
+      "type": "writers.ept_addon",
+      "addons": {
+        "/output/LASFile_1_entwine_addon/ept_x": "X"
+      }
+    }
+  ]
+}

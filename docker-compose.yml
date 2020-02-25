@@ -1,0 +1,26 @@
+version: '3.3'
+
+services:
+  pdal_entwine_python:
+    image: pdal_with_python
+    volumes:
+      - .:/app
+      - ./output/python:/output
+    command: python3 main.py
+    working_dir: /app
+  pdal_entwine_cli:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: pdal_with_python
+    volumes:
+      - .:/app
+      - ./output/cli:/output
+    command: pdal pipeline -i pipeline_entwine.json
+    working_dir: /app
+  entwine_convert:
+    volumes:
+      - .:/app
+    image: connormanning/entwine:latest
+    working_dir: /app
+    command: build -i /app/LASFile_1.laz -o /app/LASFile_1_entwine
