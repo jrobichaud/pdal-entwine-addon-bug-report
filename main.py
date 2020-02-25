@@ -7,7 +7,6 @@ def main():
     with open("pipeline_entwine.json") as pipeline_json:
         json_pipeline = pipeline_json.read()
     pipeline = pdal.Pipeline(json_pipeline)
-    pipeline.validate()  # check if our JSON and options were good
     pipeline.loglevel = 8  # really noisy
     pipeline.execute()
 
